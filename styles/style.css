@@ -9,6 +9,8 @@ main {
 }
 
 #photo-dialog.opened {
+    width: 688px;
+
     background: var(--header-and-footer-background);
 
     padding: 56px 64px;
@@ -150,8 +152,6 @@ main {
     rotate: 180deg;
 }
 
-.next-selector-button {}
-
 .image-counter {
     width: 40px;
     display: flex;
@@ -225,7 +225,7 @@ main {
 
 @media screen and (max-width: 376px) {
     #current-dialog-image {
-        height: 150px;
+        height: 250px;
     }
 }
 
