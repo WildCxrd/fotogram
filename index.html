@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/style.css">
+
+    <script src="./scripts/images.js"></script>
 </head>
 
-<body>
+<body onload="loadAllImages()">
 
     <header class="page-header">
         <img src="./assets/svg/fotogram_logo.svg" alt="The Fotogram logo.">
@@ -24,7 +26,7 @@
                 <h1>Your personal photo album</h1>
             </header>
 
-            <div class="photos-panel">
+            <div id="images-panel" class="photos-panel">
 
             </div>
         </section>

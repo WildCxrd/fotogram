@@ -13,11 +13,11 @@ main {
 .page-header {
     background: var(--header-and-footer-background);
 
-    padding: 20px 100px;
+    padding: 20px max(100px, calc(50% - 720px));
 }
 
 .photos-section {
-    padding: 100px 80px;
+    padding: 100px max(80px, calc(50% - 720px));
 
     display: flex;
     flex-direction: column;
@@ -27,13 +27,21 @@ main {
 
 .photos-section>header>h1 {
     font-weight: 800;
+    font-size: 3.5rem;
 }
 
-.photos-panel {}
+.photos-panel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
 
 .photos-panel>img {
     height: 150px;
     width: 150px;
+
+    object-fit: cover;
 
     border: 2px solid rgba(18, 70, 88, 1);
     border-radius: 16px;
@@ -44,7 +52,7 @@ main {
 
     background: var(--header-and-footer-background);
 
-    padding: 40px 100px;
+    padding: 40px max(100px, calc(50% - 720px));
 
     display: flex;
     justify-content: center;
