@@ -42,16 +42,16 @@
 
                 <div class="dialog-button-panel">
                     <button class="dialog-image-selector-button previous-selector-button">
-                        <img src="./assets/icons/arrow-right.svg" alt="">
+                        <img src="./assets/icons/arrow-right.svg" alt="" onclick="loadPreviousImage()">
                     </button>
 
                     <div class="image-counter">
-                        <p id="current-image-index-text">x</p>
+                        <p id="current-image-position-text">x</p>
                         <p>/</p>
                         <p id="total-image-count-text">y</p>
                     </div>
 
-                    <button class="dialog-image-selector-button next-selector-button">
+                    <button class="dialog-image-selector-button next-selector-button" onclick="loadNextImage()">
                         <img src="./assets/icons/arrow-right.svg" alt="">
                     </button>
                 </div>

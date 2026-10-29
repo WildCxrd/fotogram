@@ -25,18 +25,52 @@ function openPhotoDialog(event) {
     const photoDialog = document.getElementById("photo-dialog");
     const selectedImageFilePath = event.currentTarget.src;
 
-    const photoDialogTitle = document.getElementById("photo-dialog-title");
-    const currentDialogImage = document.getElementById("current-dialog-image");
-    const currentImageIndexText = document.getElementById("current-image-index-text");
-    const totalImageCountText = document.getElementById("total-image-count-text");
-
-    photoDialogTitle.innerHTML = getFileName(selectedImageFilePath);
-    currentDialogImage.src = selectedImageFilePath;
-    currentImageIndexText.innerHTML = getImagePosition(selectedImageFilePath);
-    totalImageCountText.innerHTML = imageFilePaths.length;
+    loadDialogUiForImage(selectedImageFilePath);
 
     photoDialog.showModal();
     photoDialog.classList.add("opened");
+}
+
+function loadNextImage() {
+    const currentImagePosition = document.getElementById("current-image-position-text").innerHTML;
+    const currentImageIndex = currentImagePosition - 1;
+    let nextImageFilePath = "";
+
+    if (currentImageIndex < imageFilePaths.length - 1) {
+        nextImageFilePath = imageFilePaths[currentImageIndex + 1];
+    }
+    else {
+        nextImageFilePath = imageFilePaths[0];
+    }
+
+    loadDialogUiForImage(nextImageFilePath);
+}
+
+function loadPreviousImage() {
+    const currentImagePosition = document.getElementById("current-image-position-text").innerHTML;
+    const currentImageIndex = currentImagePosition - 1;
+    let previousImageFilePath = "";
+
+    if (currentImageIndex > 0) {
+        previousImageFilePath = imageFilePaths[currentImageIndex - 1];
+    }
+    else {
+        previousImageFilePath = imageFilePaths[imageFilePaths.length - 1];
+    }
+
+    loadDialogUiForImage(previousImageFilePath);
+}
+
+function loadDialogUiForImage(imageFilePath) {
+    const photoDialogTitle = document.getElementById("photo-dialog-title");
+    const currentDialogImage = document.getElementById("current-dialog-image");
+    const currentImagePositionText = document.getElementById("current-image-position-text");
+    const totalImageCountText = document.getElementById("total-image-count-text");
+
+    photoDialogTitle.innerHTML = getFileName(imageFilePath);
+    currentDialogImage.src = imageFilePath;
+    currentImagePositionText.innerHTML = getImagePosition(imageFilePath);
+    totalImageCountText.innerHTML = imageFilePaths.length;
 }
 
 function closePhotoDialog() {
