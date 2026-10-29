@@ -29,7 +29,7 @@ main {
 
 #current-dialog-image {
     height: 375px;
-    width: 560px;
+    width: 100%;
 
     object-fit: contain;
 }
@@ -177,13 +177,14 @@ main {
     gap: 16px;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1281px) {
     #current-dialog-image {
         height: 300px;
+        object-fit: scale-down;
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
     #photo-dialog.opened {
         padding: 32px 16px;
     }
@@ -200,5 +201,11 @@ main {
 
     .photo-dialog-headline {
         flex-direction: column-reverse;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    #current-dialog-image {
+        height: 150px;
     }
 }
