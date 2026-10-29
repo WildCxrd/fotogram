@@ -204,8 +204,28 @@ main {
     }
 }
 
+@media screen and (max-width: 426px) {
+    .page-header {
+        padding-left: 40px;
+        padding-right: 40px;
+
+        display: flex;
+        justify-content: center;
+    }
+}
+
 @media screen and (max-width: 376px) {
     #current-dialog-image {
         height: 150px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .photos-section>header>h1 {
+        font-size: 1.5rem;
+    }
+
+    .dialog-button-panel {
+        gap: 20px;
     }
 }
