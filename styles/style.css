@@ -10,6 +10,24 @@ main {
     background: rgba(6, 23, 30, 1);
 }
 
+#photo-dialog.opened {
+    background: var(--header-and-footer-background);
+
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+#current-dialog-image {
+    height: 375px;
+    width: 560px;
+}
+
+#photo-dialog-title {
+    font-weight: 700;
+    color: white;
+}
+
 .page-header {
     background: var(--header-and-footer-background);
 
@@ -45,6 +63,55 @@ main {
 
     border: 2px solid rgba(18, 70, 88, 1);
     border-radius: 16px;
+}
+
+.photo-dialog-headline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-dialog-button {
+    all: unset;
+}
+
+.close-dialog-button>img {
+    height: 13px;
+    width: 13px;
+}
+
+.dialog-button-panel {
+    font-weight: 500;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 56px;
+}
+
+.dialog-image-selector-button {
+    height: 60px;
+    width: 60px;
+
+    background: rgba(253, 91, 79, 0.1);
+
+    border: unset;
+    border-radius: 100px;
+}
+
+.dialog-image-selector-button>img {
+    height: 24px;
+    width: 24px;
+}
+
+.previous-selector-button>img {
+    rotate: 180deg;
+}
+
+.next-selector-button {}
+
+.image-counter {
+    display: flex;
 }
 
 .page-footer {
