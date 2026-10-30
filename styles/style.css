@@ -161,7 +161,7 @@ main {
     rotate: 180deg;
 }
 
-.image-counter {
+.image-nav {
     width: 40px;
     display: flex;
     justify-content: center;
