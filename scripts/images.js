@@ -13,13 +13,24 @@ const imageFilePaths = [
     "./assets/img/winter.jpg"
 ];
 
+// #region preparations
+
 function loadAllImages() {
     const imagesPanel = document.getElementById("images-panel");
 
     imageFilePaths.forEach(imgFilePath =>
         imagesPanel.innerHTML += createImgHtml(imgFilePath, "openPhotoDialog")
     );
+
+    preparePhotoDialog();
 }
+
+function preparePhotoDialog() {
+    const photoDialog = document.getElementById("photo-dialog");
+    photoDialog.addEventListener("close", closedPhotoDialog);
+}
+
+// #endregion
 
 function openPhotoDialog(event) {
     const photoDialog = document.getElementById("photo-dialog");
@@ -76,6 +87,10 @@ function loadDialogUiForImage(imageFilePath) {
 function closePhotoDialog() {
     const photoDialog = document.getElementById("photo-dialog");
     photoDialog.close();
+}
+
+function closedPhotoDialog() {
+    const photoDialog = document.getElementById("photo-dialog");
     photoDialog.classList.remove("opened");
 }
 
