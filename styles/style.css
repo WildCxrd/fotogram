@@ -130,7 +130,8 @@ main {
     cursor: pointer;
 }
 
-.close-dialog-button:hover {
+.close-dialog-button:hover,
+.close-dialog-button:focus-visible {
     background: rgba(18, 70, 88, 1);
 }
 
