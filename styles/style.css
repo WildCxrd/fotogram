@@ -27,6 +27,11 @@ main {
     gap: 48px;
 }
 
+#photo-dialog.opened::backdrop{
+    opacity: 0.5;
+    background: black;
+}
+
 #photo-dialog-title {
     font-weight: bold;
     font-size: 1.5rem;
