@@ -16,7 +16,7 @@ const IMAGES = [
 // #region preparations
 
 function loadAllImages() {
-    const imagesPanel = document.getElementById("images-panel");
+    const imagesPanel = document.getElementById("imagesPanel");
 
     IMAGES.forEach(image =>
         imagesPanel.innerHTML += createImgHtml("photo-wrapper-button", image.path, image.alt, "openPhotoDialog")
@@ -26,17 +26,17 @@ function loadAllImages() {
 }
 
 function preparePhotoDialog() {
-    const photoDialog = document.getElementById("photo-dialog");
+    const photoDialog = document.getElementById("photoDialog");
     photoDialog.addEventListener("close", closedPhotoDialog);
 }
 
 // #endregion
 
 function loadDialogUiForImage(imageFilePath, alt) {
-    const photoDialogTitle = document.getElementById("photo-dialog-title");
-    const currentDialogImage = document.getElementById("current-dialog-image");
-    const currentImagePositionText = document.getElementById("current-image-position-text");
-    const totalImageCountText = document.getElementById("total-image-count-text");
+    const photoDialogTitle = document.getElementById("photoDialogTitle");
+    const currentDialogImage = document.getElementById("currentDialogImage");
+    const currentImagePositionText = document.getElementById("currentImagePositionText");
+    const totalImageCountText = document.getElementById("totalImageCountText");
 
     photoDialogTitle.innerHTML = getFileName(imageFilePath);
     currentDialogImage.src = imageFilePath;
@@ -78,7 +78,7 @@ function getFileNameWithExtension(filePath) {
 // #region event handlers
 
 function openPhotoDialog(event) {
-    const photoDialog = document.getElementById("photo-dialog");
+    const photoDialog = document.getElementById("photoDialog");
 
     loadDialogUiForImage(event.currentTarget.children[0].src, event.currentTarget.children[0].alt);
 
@@ -87,12 +87,12 @@ function openPhotoDialog(event) {
 }
 
 function closePhotoDialog() {
-    const photoDialog = document.getElementById("photo-dialog");
+    const photoDialog = document.getElementById("photoDialog");
     photoDialog.close();
 }
 
 function closedPhotoDialog() {
-    const photoDialog = document.getElementById("photo-dialog");
+    const photoDialog = document.getElementById("photoDialog");
     photoDialog.classList.remove("opened");
 }
 
@@ -107,7 +107,7 @@ function loadPreviousImage() {
 }
 
 function getCurrentDialogImageIndex() {
-    const currentImagePosition = document.getElementById("current-image-position-text").innerHTML;
+    const currentImagePosition = document.getElementById("currentImagePositionText").innerHTML;
     return currentImagePosition - 1;
 }
 

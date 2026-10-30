@@ -8,11 +8,11 @@ main {
     background: rgba(6, 23, 30, 1);
 }
 
-#photo-dialog {
+#photoDialog {
     display: none;
 }
 
-#photo-dialog.opened {
+#photoDialog.opened {
     width: 688px;
 
     background: var(--header-and-footer-background);
@@ -27,18 +27,18 @@ main {
     gap: 48px;
 }
 
-#photo-dialog.opened::backdrop {
+#photoDialog.opened::backdrop {
     opacity: 0.5;
     background: black;
 }
 
-#photo-dialog-title {
+#photoDialogTitle {
     font-weight: bold;
     font-size: 1.5rem;
     color: white;
 }
 
-#current-dialog-image {
+#currentDialogImage {
     height: 375px;
     width: 100%;
 
@@ -204,17 +204,17 @@ main {
 }
 
 @media screen and (max-width: 1281px) {
-    #current-dialog-image {
+    #currentDialogImage {
         height: 320px;
     }
 }
 
 @media screen and (max-width: 769px) {
-    #photo-dialog.opened {
+    #photoDialog.opened {
         padding: 32px 16px;
     }
 
-    #photo-dialog-title {
+    #photoDialogTitle {
         align-self: flex-start;
     }
 
