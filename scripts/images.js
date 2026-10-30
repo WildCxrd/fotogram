@@ -32,46 +32,6 @@ function preparePhotoDialog() {
 
 // #endregion
 
-function openPhotoDialog(event) {
-    const photoDialog = document.getElementById("photo-dialog");
-    const selectedImageFilePath = event.currentTarget.src;
-
-    loadDialogUiForImage(selectedImageFilePath);
-
-    photoDialog.showModal();
-    photoDialog.classList.add("opened");
-}
-
-function loadNextImage() {
-    const currentImagePosition = document.getElementById("current-image-position-text").innerHTML;
-    const currentImageIndex = currentImagePosition - 1;
-    let nextImageFilePath = "";
-
-    if (currentImageIndex < imageFilePaths.length - 1) {
-        nextImageFilePath = imageFilePaths[currentImageIndex + 1];
-    }
-    else {
-        nextImageFilePath = imageFilePaths[0];
-    }
-
-    loadDialogUiForImage(nextImageFilePath);
-}
-
-function loadPreviousImage() {
-    const currentImagePosition = document.getElementById("current-image-position-text").innerHTML;
-    const currentImageIndex = currentImagePosition - 1;
-    let previousImageFilePath = "";
-
-    if (currentImageIndex > 0) {
-        previousImageFilePath = imageFilePaths[currentImageIndex - 1];
-    }
-    else {
-        previousImageFilePath = imageFilePaths[imageFilePaths.length - 1];
-    }
-
-    loadDialogUiForImage(previousImageFilePath);
-}
-
 function loadDialogUiForImage(imageFilePath) {
     const photoDialogTitle = document.getElementById("photo-dialog-title");
     const currentDialogImage = document.getElementById("current-dialog-image");
@@ -114,6 +74,16 @@ function getFileNameWithExtension(filePath) {
 
 // #region event handlers
 
+function openPhotoDialog(event) {
+    const photoDialog = document.getElementById("photo-dialog");
+    const selectedImageFilePath = event.currentTarget.src;
+
+    loadDialogUiForImage(selectedImageFilePath);
+
+    photoDialog.showModal();
+    photoDialog.classList.add("opened");
+}
+
 function closePhotoDialog() {
     const photoDialog = document.getElementById("photo-dialog");
     photoDialog.close();
@@ -122,6 +92,36 @@ function closePhotoDialog() {
 function closedPhotoDialog() {
     const photoDialog = document.getElementById("photo-dialog");
     photoDialog.classList.remove("opened");
+}
+
+function loadNextImage() {
+    const currentImagePosition = document.getElementById("current-image-position-text").innerHTML;
+    const currentImageIndex = currentImagePosition - 1;
+    let nextImageFilePath = "";
+
+    if (currentImageIndex < imageFilePaths.length - 1) {
+        nextImageFilePath = imageFilePaths[currentImageIndex + 1];
+    }
+    else {
+        nextImageFilePath = imageFilePaths[0];
+    }
+
+    loadDialogUiForImage(nextImageFilePath);
+}
+
+function loadPreviousImage() {
+    const currentImagePosition = document.getElementById("current-image-position-text").innerHTML;
+    const currentImageIndex = currentImagePosition - 1;
+    let previousImageFilePath = "";
+
+    if (currentImageIndex > 0) {
+        previousImageFilePath = imageFilePaths[currentImageIndex - 1];
+    }
+    else {
+        previousImageFilePath = imageFilePaths[imageFilePaths.length - 1];
+    }
+
+    loadDialogUiForImage(previousImageFilePath);
 }
 
 // #endregion
