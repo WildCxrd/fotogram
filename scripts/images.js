@@ -1,4 +1,4 @@
-const images = [
+const IMAGES = [
     alaska = { path: "./assets/img/alaska.jpg", alt: "A glacier in Alaska on the left side of the sea." },
     anime = { path: "./assets/img/anime.jpg", alt: "A street in a neon lighted city, drawn in an anime style." },
     atmosphere = { path: "./assets/img/atmosphere.png", alt: "Dark storm clouds." },
@@ -18,7 +18,7 @@ const images = [
 function loadAllImages() {
     const imagesPanel = document.getElementById("images-panel");
 
-    images.forEach(image =>
+    IMAGES.forEach(image =>
         imagesPanel.innerHTML += createImgHtml("photo-wrapper-button", image.path, image.alt, "openPhotoDialog")
     );
 
@@ -42,7 +42,7 @@ function loadDialogUiForImage(imageFilePath, alt) {
     currentDialogImage.src = imageFilePath;
     currentDialogImage.alt = alt;
     currentImagePositionText.innerHTML = getImagePosition(imageFilePath);
-    totalImageCountText.innerHTML = images.length;
+    totalImageCountText.innerHTML = IMAGES.length;
 }
 
 function createImgHtml(wrapperButtonClass, imgFilePath, alt, onClickFunctionName) {
@@ -54,8 +54,8 @@ function createImgHtml(wrapperButtonClass, imgFilePath, alt, onClickFunctionName
 function getImagePosition(imageFilePath) {
     const fileNameWithExtension = getFileNameWithExtension(imageFilePath);
 
-    for (let index = 0; index < images.length; index++) {
-        const elementFilePath = images[index].path;
+    for (let index = 0; index < IMAGES.length; index++) {
+        const elementFilePath = IMAGES[index].path;
         const elementFileNameWithExtension = getFileNameWithExtension(elementFilePath);
 
         if (elementFileNameWithExtension == fileNameWithExtension) {
@@ -97,48 +97,37 @@ function closedPhotoDialog() {
 }
 
 function loadNextImage() {
-    const currentImagePosition = document.getElementById("current-image-position-text").innerHTML;
-    const currentImageIndex = currentImagePosition - 1;
-
-    let nextImageFilePath = "";
-    let nextImageAlt = "";
-
-    if (currentImageIndex < images.length - 1) {
-        const nextImage = images[currentImageIndex + 1];
-
-        nextImageFilePath = nextImage.path;
-        nextImageAlt = nextImage.alt;
-    }
-    else {
-        const firstImage = images[0];
-        nextImageFilePath = firstImage.path;
-        nextImageAlt = firstImage.alt;
-    }
-
-    loadDialogUiForImage(nextImageFilePath, nextImageAlt);
+    const currentDialogImageIndex = getCurrentDialogImageIndex();
+    loadImage(currentDialogImageIndex + 1); // load image at next index
 }
 
 function loadPreviousImage() {
+    const currentDialogImageIndex = getCurrentDialogImageIndex();
+    loadImage(currentDialogImageIndex - 1); // load image at previous index
+}
+
+function getCurrentDialogImageIndex() {
     const currentImagePosition = document.getElementById("current-image-position-text").innerHTML;
-    const currentImageIndex = currentImagePosition - 1;
+    return currentImagePosition - 1;
+}
 
-    let previousImageFilePath = "";
-    let previousImageAlt = "";
+function loadImage(index) {
+    let imageToLoad;
 
-    if (currentImageIndex > 0) {
-        const previousImage = images[currentImageIndex - 1];
-
-        previousImageFilePath = previousImage.path;
-        previousImageAlt = previousImage.alt;
+    if (index >= 0 && index < IMAGES.length) {
+        imageToLoad = IMAGES[index]; // load desired image
+    }
+    else if (index < 0) {
+        imageToLoad = IMAGES[IMAGES.length - 1]; // loop to last iamge
+    }
+    else if (index >= IMAGES.length) {
+        imageToLoad = IMAGES[0]; // loop to first image
     }
     else {
-        const lastImage = images[images.length - 1];
-
-        previousImageFilePath = lastImage.path;
-        previousImageAlt = lastImage.alt;
+        throw new RangeError(`Index ${index} not in range of ${IMAGES.length} elements.`);
     }
 
-    loadDialogUiForImage(previousImageFilePath, previousImageAlt);
+    loadDialogUiForImage(imageToLoad.path, imageToLoad.alt);
 }
 
 // #endregion
