@@ -19,7 +19,7 @@ function loadAllImages() {
     const imagesPanel = document.getElementById("images-panel");
 
     images.forEach(image =>
-        imagesPanel.innerHTML += createImgHtml(image.path, image.alt, "openPhotoDialog")
+        imagesPanel.innerHTML += createImgHtml("photo-wrapper-button", image.path, image.alt, "openPhotoDialog")
     );
 
     preparePhotoDialog();
@@ -45,8 +45,10 @@ function loadDialogUiForImage(imageFilePath, alt) {
     totalImageCountText.innerHTML = images.length;
 }
 
-function createImgHtml(imgFilePath, alt, onClickFunctionName) {
-    return `<img src="${imgFilePath}" alt="${alt}" onclick="${onClickFunctionName}(event)">`;
+function createImgHtml(wrapperButtonClass, imgFilePath, alt, onClickFunctionName) {
+    return `<button class="${wrapperButtonClass}" onclick="${onClickFunctionName}(event)">
+                <img src="${imgFilePath}" alt="${alt}">
+            </button>`;
 }
 
 function getImagePosition(imageFilePath) {
@@ -78,7 +80,7 @@ function getFileNameWithExtension(filePath) {
 function openPhotoDialog(event) {
     const photoDialog = document.getElementById("photo-dialog");
 
-    loadDialogUiForImage(event.currentTarget.src, event.currentTarget.alt);
+    loadDialogUiForImage(event.currentTarget.children[0].src, event.currentTarget.children[0].alt);
 
     photoDialog.showModal();
     photoDialog.classList.add("opened");

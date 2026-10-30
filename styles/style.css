@@ -27,7 +27,7 @@ main {
     gap: 48px;
 }
 
-#photo-dialog.opened::backdrop{
+#photo-dialog.opened::backdrop {
     opacity: 0.5;
     background: black;
 }
@@ -74,11 +74,11 @@ main {
     gap: 16px;
 }
 
-.photos-panel>img {
+.photo-wrapper-button {
+    all: unset;
+
     height: 150px;
     width: 150px;
-
-    object-fit: cover;
 
     border: 2px solid rgba(18, 70, 88, 1);
     border-radius: 16px;
@@ -88,10 +88,25 @@ main {
     transition: all 255ms ease-in-out;
 }
 
-.photos-panel>img:hover {
+.photos-panel img {
+    height: 150px;
+    width: 150px;
+
+    border-radius: 16px;
+
+    object-fit: cover;
+}
+
+.photos-panel>button:hover,
+.photos-panel>button:focus-visible {
     border-color: rgba(107, 193, 225, 1);
 
     transition: all 255ms ease-in-out;
+}
+
+.photos-panel>button:focus-visible{
+    outline: 2px solid lightblue;
+    outline-offset: 2px;
 }
 
 .photo-dialog-headline {
