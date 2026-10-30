@@ -1,0 +1,265 @@
+* {
+    font-family: 'Figtree';
+}
+
+main {
+    color: white;
+
+    background: rgba(6, 23, 30, 1);
+}
+
+#photo-dialog {
+    display: none;
+}
+
+#photo-dialog.opened {
+    width: 688px;
+
+    background: var(--header-and-footer-background);
+
+    padding: 56px 64px;
+    border-radius: 40px;
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+#photo-dialog.opened::backdrop {
+    opacity: 0.5;
+    background: black;
+}
+
+#photo-dialog-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+}
+
+#current-dialog-image {
+    height: 375px;
+    width: 100%;
+
+    object-fit: contain;
+}
+
+.page-header {
+    background: var(--header-and-footer-background);
+
+    padding: 20px max(100px, calc(50% - 720px));
+}
+
+.photos-section {
+    padding: 100px max(80px, calc(50% - 720px));
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+.photos-section>header>h1 {
+    font-weight: 800;
+    font-size: 3.5rem;
+}
+
+.photos-panel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.photo-wrapper-button {
+    all: unset;
+
+    height: 150px;
+    width: 150px;
+
+    border: 2px solid rgba(18, 70, 88, 1);
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    transition: all 255ms ease-in-out;
+}
+
+.photos-panel img {
+    height: 150px;
+    width: 150px;
+
+    border-radius: 16px;
+
+    object-fit: cover;
+}
+
+.photos-panel>button:hover,
+.photos-panel>button:focus-visible {
+    border-color: rgba(107, 193, 225, 1);
+
+    transition: all 255ms ease-in-out;
+}
+
+.photos-panel>button:focus-visible{
+    outline: 2px solid lightblue;
+    outline-offset: 2px;
+}
+
+.photo-dialog-headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-dialog-button {
+    all: unset;
+
+    height: 32px;
+    width: 32px;
+
+    border-radius: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.close-dialog-button:hover,
+.close-dialog-button:focus-visible {
+    background: rgba(18, 70, 88, 1);
+}
+
+.close-dialog-button>img {
+    height: 13px;
+    width: 13px;
+}
+
+.dialog-button-panel {
+    font-weight: 500;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 56px;
+}
+
+.dialog-image-selector-button {
+    height: 60px;
+    width: 60px;
+
+    background: rgba(253, 91, 79, 0.1);
+
+    border: unset;
+    border-radius: 100px;
+
+    padding: unset;
+
+    cursor: pointer;
+}
+
+.dialog-image-selector-button:hover {
+    background: rgba(253, 91, 79, 0.2);
+}
+
+.dialog-image-selector-button>img {
+    height: 24px;
+    width: 24px;
+}
+
+.previous-selector-button>img {
+    rotate: 180deg;
+}
+
+.image-nav {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.page-footer {
+    font-size: 0.875rem;
+
+    background: var(--header-and-footer-background);
+
+    padding: 40px max(100px, calc(50% - 720px));
+
+    display: flex;
+    justify-content: center;
+}
+
+.da-logo-wrapper {
+    color: rgba(153, 172, 179, 1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+@media screen and (max-width: 1281px) {
+    #current-dialog-image {
+        height: 300px;
+        object-fit: scale-down;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    #photo-dialog.opened {
+        padding: 32px 16px;
+    }
+
+    #photo-dialog-title {
+        align-self: flex-start;
+    }
+
+    .photos-section {
+        padding: 40px 20px;
+        gap: 56px;
+    }
+
+    .photos-section>header>h1 {
+        font-weight: 800;
+        font-size: 3rem;
+    }
+
+    .photo-dialog-headline {
+        flex-direction: column-reverse;
+    }
+
+    .close-dialog-button {
+        align-self: flex-end;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .page-header {
+        padding-left: 40px;
+        padding-right: 40px;
+
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    #current-dialog-image {
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .photos-section>header>h1 {
+        font-size: 1.5rem;
+    }
+
+    .dialog-button-panel {
+        gap: 20px;
+    }
+}

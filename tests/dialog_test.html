@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantischer Dialog</title>
+
+    <style>
+        dialog {
+            border: 5px solid red;
+            transform: translateX(50px);
+            transition: all 1s ease-in;
+        }
+
+        dialog.opened {
+            border: 5px solid red;
+            transform: translateX(0px);
+            transition: all 1s ease-in;
+        }
+
+        dialog::backdrop {
+            opacity: 0;
+            background-color: black;
+            transition: all 1s ease-in;
+        }
+
+        dialog.opened::backdrop {
+            opacity: 0.5;
+            transition: all 1s ease-in;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1 id="headline" tabindex="-1">Dialog-Test</h1>
+
+        <button aria-haspopup="dialog" aria-controls="testDialog" onclick="openDialog()">Dialog öffnen</button>
+        <button onclick="setFocusOnTop()">Focus top</button>
+
+        <dialog id="testDialog" aria-labelledby="dialogTitle" aria-describedby="dialogDescription">
+            <header>
+                <h2 id="dialogTitle">
+                    Test-Dialog
+                </h2>
+            </header>
+
+            <section>
+                <p id="dialogDescription">Hier stehen Infos...</p>
+            </section>
+
+            <footer>
+                <button aria-label="Dialog schließen" onclick="closeDialog()">Schließen</button>
+            </footer>
+        </dialog>
+    </main>
+
+    <script>
+        const dialogRef = document.getElementById("testDialog");
+
+        function openDialog() {
+            dialogRef.showModal();
+            dialogRef.classList.add("opened");
+        }
+
+        function closeDialog() {
+            dialogRef.close();
+            dialogRef.classList.remove("opened");
+        }
+
+        function setFocusOnTop() {
+            const elemRef = document.getElementById("headline");
+            elemRef.focus();
+        }
+    </script>
+</body>
+
+</html>
