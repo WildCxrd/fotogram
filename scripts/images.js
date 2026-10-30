@@ -84,16 +84,6 @@ function loadDialogUiForImage(imageFilePath) {
     totalImageCountText.innerHTML = imageFilePaths.length;
 }
 
-function closePhotoDialog() {
-    const photoDialog = document.getElementById("photo-dialog");
-    photoDialog.close();
-}
-
-function closedPhotoDialog() {
-    const photoDialog = document.getElementById("photo-dialog");
-    photoDialog.classList.remove("opened");
-}
-
 function createImgHtml(imgFilePath, onClickFunctionName) {
     return `<img src="${imgFilePath}" alt="" onclick="${onClickFunctionName}(event)">`;
 }
@@ -121,3 +111,17 @@ function getFileNameWithExtension(filePath) {
     const splitFilePath = filePath.split("/");
     return splitFilePath[splitFilePath.length - 1];
 }
+
+// #region event handlers
+
+function closePhotoDialog() {
+    const photoDialog = document.getElementById("photo-dialog");
+    photoDialog.close();
+}
+
+function closedPhotoDialog() {
+    const photoDialog = document.getElementById("photo-dialog");
+    photoDialog.classList.remove("opened");
+}
+
+// #endregion
